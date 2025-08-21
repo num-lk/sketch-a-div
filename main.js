@@ -21,7 +21,9 @@ document.addEventListener('mouseover', (e) => {
 // Add event handler to resize button
 const resizeButton = document.querySelector('.resize-button');
 resizeButton.addEventListener('click', () => {
-    let input = prompt('Enter new grid size');
+    let input = parseInt(prompt('Enter new grid size'));
+    if (isNaN(input) || input < 1) { return; }
+    generateGrid(Math.min(input, 100));
 });
 
 function generateGrid(size) {
